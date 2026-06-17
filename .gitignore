@@ -1,0 +1,26 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 根目录大文件（素材源文件，已复制到 site/assets/）
+/*.tar.gz
+/*.pkg
+/*.zip
+/*.pac
+/*.docx
+
+# 根目录参考图（不在 site 中使用的原始素材）
+/ChatGPT Image*.png
+/*.jpg
+/*.mp4
+
+# 其他项目
+/lumi-pet-run/
+
+# Python
+__pycache__/
+/*.pyc
+/ielts_7_day_plan.py
+
+# Netlify 构建缓存
+/.netlify/

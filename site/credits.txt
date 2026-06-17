@@ -1,0 +1,7 @@
+Landscape image sources:
+
+- landscape-yunnan-snow.jpg: Unsplash Yunnan search result, photo by Xuyu Chi.
+- landscape-dark-valley.jpg: Unsplash dark valley search result, photo by Nipun Haldar.
+- landscape-clouds.jpg: Unsplash mountain fog search result, photo by Tyler Lastovich.
+
+Unsplash attribution is not required, but keeping source notes is recommended for a public brand site.
