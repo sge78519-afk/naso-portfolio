@@ -274,6 +274,7 @@ h3,
   position: relative;
   min-height: 96svh;
   overflow: hidden;
+  contain: paint;
   border-bottom: 1px solid var(--line);
   background: var(--soot);
 }
@@ -300,7 +301,6 @@ h3,
     linear-gradient(180deg, rgba(13, 13, 11, 0.08), rgba(13, 13, 11, 0.36)),
     url("assets/landscape-yunnan-snow.jpg") center 42% / cover no-repeat;
   filter: saturate(0.72) contrast(1.08) brightness(0.74);
-  transform: scale(1.03);
   animation: heroBreath 22s ease-in-out infinite alternate;
 }
 
@@ -436,6 +436,8 @@ h1 span {
 }
 
 .hero-panel {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 12px;
   padding: 22px;
@@ -444,6 +446,44 @@ h1 span {
   background: rgba(13, 13, 11, 0.44);
   backdrop-filter: blur(10px);
   animation: panelFloat 8s ease-in-out infinite alternate;
+}
+
+.hero-panel::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(120deg, transparent 0 36%, rgba(215, 197, 164, 0.16), transparent 64%),
+    linear-gradient(180deg, rgba(184, 137, 59, 0.08), transparent 38%);
+  opacity: 0.52;
+  transform: translateX(-72%);
+  animation: softScan 7.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-panel > * {
+  position: relative;
+}
+
+.brand-signet {
+  min-height: 246px;
+  align-content: end;
+}
+
+.brand-signet::after {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 54px;
+  height: 54px;
+  content: "";
+  border: 1px solid rgba(215, 197, 164, 0.32);
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(215, 197, 164, 0.34) 49% 51%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(215, 197, 164, 0.34) 49% 51%, transparent 52%);
+  opacity: 0.64;
+  animation: sealPulse 5.8s ease-in-out infinite;
 }
 
 .hero-panel span {
@@ -521,6 +561,26 @@ h1 span {
   margin-bottom: 48px;
 }
 
+.centered-heading {
+  position: relative;
+  max-width: 840px;
+  margin-right: auto;
+  margin-bottom: 64px;
+  margin-left: auto;
+  text-align: center;
+}
+
+.centered-heading::after {
+  display: block;
+  width: min(420px, 72%);
+  height: 1px;
+  margin: 28px auto 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  transform-origin: center;
+  animation: lineBreathe 4.8s ease-in-out infinite;
+}
+
 .section h2 {
   margin-bottom: 20px;
   color: var(--white);
@@ -542,6 +602,11 @@ h1 span {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 390px;
   gap: 66px;
+  align-items: center;
+}
+
+.mirror-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
 }
 
@@ -569,12 +634,32 @@ h1 span {
 }
 
 .profile-card {
+  position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
   background:
     linear-gradient(180deg, rgba(255, 250, 240, 0.07), rgba(255, 250, 240, 0.025)),
     var(--panel);
+}
+
+.profile-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  border: 1px solid transparent;
+  background:
+    linear-gradient(90deg, transparent, rgba(184, 137, 59, 0.22), transparent) top / 100% 1px no-repeat,
+    linear-gradient(180deg, transparent, rgba(184, 137, 59, 0.14), transparent) right / 1px 100% no-repeat;
+  opacity: 0.58;
+  pointer-events: none;
+  animation: borderTrace 6.5s ease-in-out infinite;
+}
+
+.ritual-card {
+  max-width: 520px;
+  justify-self: end;
 }
 
 .profile-avatar {
@@ -688,11 +773,28 @@ h1 span {
 }
 
 .work-card {
+  position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--panel-soft);
   transition: border-color 420ms ease, background 420ms ease, transform 420ms ease, box-shadow 420ms ease;
+}
+
+.work-card::before {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  content: "";
+  border-top: 1px solid rgba(215, 197, 164, 0.46);
+  border-right: 1px solid rgba(215, 197, 164, 0.46);
+  opacity: 0;
+  transform: translate(-8px, 8px);
+  transition: opacity 360ms ease, transform 360ms ease;
+  pointer-events: none;
 }
 
 .work-card:hover {
@@ -702,6 +804,11 @@ h1 span {
     0 24px 80px rgba(0, 0, 0, 0.28),
     0 1px 0 var(--brass-glow) inset;
   transform: translateY(-4px);
+}
+
+.work-card:hover::before {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .work-card-large {
@@ -752,6 +859,7 @@ h1 span {
 }
 
 .work-content {
+  position: relative;
   padding: 28px;
 }
 
@@ -781,9 +889,39 @@ h1 span {
   border-left: 2px solid var(--brass);
 }
 
+.symmetric-cards .work-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.scenario-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.text-card {
+  min-height: 245px;
+  display: grid;
+  align-items: end;
+  background:
+    linear-gradient(135deg, rgba(78, 90, 59, 0.12), transparent 48%),
+    rgba(255, 250, 240, 0.045);
+}
+
+.text-card .work-content::after {
+  display: block;
+  width: 52px;
+  height: 1px;
+  margin-top: 24px;
+  content: "";
+  background: var(--brass);
+  transform-origin: left;
+  animation: lineBreathe 4.8s ease-in-out infinite;
+}
+
 .method-section {
   position: relative;
   overflow: hidden;
+  contain: paint;
   background: var(--soot);
 }
 
@@ -791,10 +929,9 @@ h1 span {
   position: absolute;
   inset: 0;
   content: "";
-  background: url("assets/landscape-clouds.jpg") center / cover no-repeat;
+  background: url("assets/landscape-clouds.jpg") 48% 50% / cover no-repeat;
   filter: saturate(0.52) brightness(0.42) contrast(1.05);
   opacity: 0.28;
-  transform: scale(1.04);
   animation: cloudDrift 24s ease-in-out infinite alternate;
 }
 
@@ -814,6 +951,7 @@ h1 span {
 
 .method-grid article {
   position: relative;
+  overflow: hidden;
   min-height: 230px;
   padding: 24px;
   border: 1px solid var(--line);
@@ -824,11 +962,33 @@ h1 span {
   transition: border-color 360ms ease, background 360ms ease, transform 360ms ease, border-left-color 360ms ease;
 }
 
+.method-grid article::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(120deg, transparent 14%, rgba(255, 250, 240, 0.07), transparent 42%),
+    linear-gradient(180deg, rgba(184, 137, 59, 0.08), transparent 44%);
+  opacity: 0;
+  transform: translateX(-38%);
+  transition: opacity 420ms ease, transform 820ms ease;
+  pointer-events: none;
+}
+
 .method-grid article:hover {
   border-color: var(--line-strong);
   border-left-color: var(--brass);
   background: rgba(13, 13, 11, 0.68);
   transform: translateY(-3px);
+}
+
+.method-grid article:hover::before {
+  opacity: 1;
+  transform: translateX(28%);
+}
+
+.method-grid article > * {
+  position: relative;
 }
 
 .method-grid span {
@@ -858,11 +1018,44 @@ h1 span {
 }
 
 .contact-panel {
+  position: relative;
   max-width: 900px;
+}
+
+.closing-panel {
+  max-width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.closing-panel::before {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 26px;
+  content: "";
+  border: 1px solid rgba(215, 197, 164, 0.28);
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(184, 137, 59, 0.58) 49% 51%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(184, 137, 59, 0.58) 49% 51%, transparent 52%),
+    rgba(13, 13, 11, 0.38);
+  box-shadow: 0 0 44px rgba(184, 137, 59, 0.08);
+  animation: sealPulse 5.8s ease-in-out infinite;
 }
 
 .contact-panel p {
   max-width: 760px;
+}
+
+.closing-panel p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.closing-panel .contact-actions {
+  justify-content: center;
 }
 
 .contact-actions span {
@@ -920,11 +1113,13 @@ h1 span {
 
 @keyframes heroBreath {
   from {
-    transform: scale(1.03) translate3d(0, 0, 0);
+    filter: saturate(0.72) contrast(1.08) brightness(0.74);
+    opacity: 1;
   }
 
   to {
-    transform: scale(1.075) translate3d(-1.2%, -1%, 0);
+    filter: saturate(0.82) contrast(1.12) brightness(0.68);
+    opacity: 0.96;
   }
 }
 
@@ -960,11 +1155,64 @@ h1 span {
 
 @keyframes cloudDrift {
   from {
-    transform: scale(1.04) translate3d(-1%, 0, 0);
+    background-position: 46% 50%;
+    opacity: 0.24;
   }
 
   to {
-    transform: scale(1.09) translate3d(1.2%, -0.8%, 0);
+    background-position: 54% 49%;
+    opacity: 0.31;
+  }
+}
+
+@keyframes softScan {
+  0%,
+  42% {
+    transform: translateX(-72%);
+  }
+
+  68%,
+  100% {
+    transform: translateX(72%);
+  }
+}
+
+@keyframes sealPulse {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.96) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+@keyframes lineBreathe {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scaleX(0.62);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes borderTrace {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: translateY(-10px);
+  }
+
+  50% {
+    opacity: 0.72;
+    transform: translateY(10px);
   }
 }
 
@@ -1019,6 +1267,14 @@ h1 span {
 
   .profile-card {
     max-width: 520px;
+  }
+
+  .ritual-card {
+    justify-self: start;
+  }
+
+  .scenario-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .work-group {
@@ -1113,6 +1369,7 @@ h1 span {
 
   .stats-grid,
   .work-grid,
+  .scenario-grid,
   .method-grid {
     grid-template-columns: 1fr;
   }
