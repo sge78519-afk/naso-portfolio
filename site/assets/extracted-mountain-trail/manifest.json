@@ -1,0 +1,126 @@
+{
+  "name": "extracted-mountain-trail-assets",
+  "source": "/Users/naso/Desktop/素材/image.png",
+  "sourceImageSize": [
+    1536,
+    1024
+  ],
+  "formats": [
+    "transparent PNG"
+  ],
+  "note": "Extracted from the supplied raster screenshot. True SVG/WebP source files are not recoverable from this flat screenshot without redrawing or a separate converter.",
+  "assets": [
+    {
+      "id": "mountain-trail-wide",
+      "label": "雪山残影长路径",
+      "kind": "hero",
+      "sourceBox": [
+        500,
+        128,
+        1452,
+        526
+      ],
+      "png": "png/mountain-trail-wide.png",
+      "width": 965,
+      "height": 425
+    },
+    {
+      "id": "mountain-trail-classic",
+      "label": "经典款：多层山形残影 + 金色线条",
+      "kind": "mountain",
+      "sourceBox": [
+        460,
+        696,
+        742,
+        872
+      ],
+      "png": "png/mountain-trail-classic.png",
+      "width": 246,
+      "height": 180
+    },
+    {
+      "id": "mountain-trail-simple",
+      "label": "简约款：单层山形 + 柔光量",
+      "kind": "mountain",
+      "sourceBox": [
+        760,
+        698,
+        972,
+        852
+      ],
+      "png": "png/mountain-trail-simple.png",
+      "width": 197,
+      "height": 132
+    },
+    {
+      "id": "mountain-trail-ink-shadow",
+      "label": "墨影款：水墨质感残影",
+      "kind": "mountain",
+      "sourceBox": [
+        998,
+        700,
+        1202,
+        852
+      ],
+      "png": "png/mountain-trail-ink-shadow.png",
+      "width": 203,
+      "height": 131
+    },
+    {
+      "id": "mountain-trail-line",
+      "label": "线描款：线条山形 + 微粒点缀",
+      "kind": "mountain-line",
+      "sourceBox": [
+        1238,
+        690,
+        1468,
+        856
+      ],
+      "png": "png/mountain-trail-line.png",
+      "width": 231,
+      "height": 161
+    },
+    {
+      "id": "mountain-trail-thumb-01",
+      "label": "素材预览 01：雪山白线",
+      "kind": "thumbnail",
+      "sourceBox": [
+        48,
+        716,
+        148,
+        782
+      ],
+      "png": "png/mountain-trail-thumb-01.png",
+      "width": 116,
+      "height": 65
+    },
+    {
+      "id": "mountain-trail-thumb-02",
+      "label": "素材预览 02：暗山残影",
+      "kind": "thumbnail",
+      "sourceBox": [
+        184,
+        716,
+        276,
+        782
+      ],
+      "png": "png/mountain-trail-thumb-02.png",
+      "width": 112,
+      "height": 66
+    },
+    {
+      "id": "mountain-glow",
+      "label": "金色柔光光晕",
+      "kind": "glow",
+      "sourceBox": [
+        314,
+        698,
+        416,
+        796
+      ],
+      "png": "png/mountain-glow.png",
+      "width": 115,
+      "height": 104
+    }
+  ]
+}

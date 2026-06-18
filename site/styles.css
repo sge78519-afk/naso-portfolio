@@ -154,6 +154,34 @@ h3,
   pointer-events: none;
 }
 
+.mountain-trail-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mountain-trail-sticker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--trail-size, 128px);
+  max-width: none;
+  height: auto;
+  opacity: 0;
+  filter:
+    drop-shadow(0 16px 18px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 18px rgba(184, 137, 59, 0.12));
+  transform:
+    translate3d(calc(var(--trail-x, 0px) - 50%), calc(var(--trail-y, 0px) - 50%), 0)
+    rotate(var(--trail-rotate, 0deg))
+    scale(0.72);
+  transform-origin: center;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
 .quick-dock {
   position: fixed;
   top: 50%;
@@ -1130,5 +1158,9 @@ h1 span {
     opacity: 1;
     filter: none;
     transform: none;
+  }
+
+  .mountain-trail-layer {
+    display: none;
   }
 }
