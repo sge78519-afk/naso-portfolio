@@ -25,3 +25,30 @@
     });
   }
 })();
+
+
+/* ===== motion layer preview (2026-11-05) ===== */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const root = document.documentElement;
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const hero = document.querySelector('.hero');
+    const y = window.scrollY;
+    if (hero) {
+      const limit = hero.offsetHeight;
+      root.style.setProperty('--hero-shift', Math.min(y, limit) * 0.18 + 'px');
+    }
+    const max = document.documentElement.scrollHeight - innerHeight;
+    root.style.setProperty('--progress', max > 0 ? Math.min(y / max, 1).toFixed(4) : 0);
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
